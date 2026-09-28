@@ -59,3 +59,15 @@
 .flow-solar i { left:1px; animation-name:sigflowdown; }
 @keyframes sigflowdown { from{top:0;opacity:.2} 20%{opacity:1} to{top:calc(100% - 8px);opacity:.2} }
 .sig-updated { margin-top:14px; font-size:15px; color:#8fa7b8; }
+
+.sigenergy-dashboard { width: 980px; max-width: 94vw; transform: scale(1.08); transform-origin: top center; }
+.spot-card { width: 760px; margin: 20px auto 0; padding: 14px 20px 10px; border:1px solid rgba(116,200,255,.55); border-radius:18px; background:rgba(8,24,38,.68); }
+.spot-title { font-size:15px; letter-spacing:2px; color:#9fdcff; }
+.spot-now { font-size:32px; font-weight:700; margin-top:2px; }
+.spot-now span { font-size:16px; font-weight:400; color:#b9cddd; }
+.spot-period,.spot-note { font-size:13px; color:#8fa7b8; }
+.spot-stats { display:flex; justify-content:center; gap:28px; font-size:14px; margin:7px 0 5px; color:#b9cddd; }
+.spot-stats b { color:#fff; }
+.spot-bars { height:46px; display:flex; align-items:flex-end; gap:1px; overflow:hidden; justify-content:center; }
+.spot-bars i { width:5px; min-height:3px; background:#55c7ff; opacity:.75; border-radius:2px 2px 0 0; }
+.spot-wait { font-size:18px; margin:8px; color:#aaa; }
