@@ -25,6 +25,16 @@ Module.register("MMM-Sigenergy", {
     }
   },
 
+  getSpotHtml: function (p) {
+    if (!p || !Number.isFinite(Number(p.current))) return '<div class="spot-card"><div class="spot-title">SPOTPRIS SE3</div><div class="spot-wait">Hämtar pris...</div></div>';
+    const f=v=>Number(v).toFixed(2);
+    const tf=iso=>iso?new Date(iso).toLocaleTimeString("sv-SE",{hour:"2-digit",minute:"2-digit"}):"--:--";
+    const vals=Array.isArray(p.values)?p.values:[];
+    const max=Math.max(...vals,1);
+    const bars=vals.map(v=>'<i style="height:'+Math.max(3,(v/max)*42)+'px"></i>').join("");
+    return '<div class="spot-card"><div><div class="spot-title">⚡ SPOTPRIS SE3</div><div class="spot-now">'+f(p.current)+' <span>kr/kWh</span></div><div class="spot-period">'+tf(p.start)+'–'+tf(p.end)+' · nästa '+(p.next==null?"—":f(p.next))+' kr</div></div><div class="spot-stats"><span>Lägst <b>'+f(p.min)+'</b></span><span>Snitt <b>'+f(p.avg)+'</b></span><span>Högst <b>'+f(p.max)+'</b></span></div><div class="spot-bars">'+bars+'</div><div class="spot-note">Spotpris exkl. moms, skatt och påslag</div></div>';
+  },
+
   getDom: function () {
     const wrapper = document.createElement("div");
     wrapper.className = "sigenergy sigenergy-dashboard";
@@ -90,6 +100,7 @@ Module.register("MMM-Sigenergy", {
           <div class="energy-value">${kw(Math.abs(grid))} <span>kW</span></div>
         </div>
       </div>
+      ${this.getSpotHtml(d.spotPrice)}
       <div class="sig-updated">↻ Senast uppdaterad ${time}</div>
     `;
     return wrapper;
