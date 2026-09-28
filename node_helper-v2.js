@@ -4,7 +4,7 @@ const fs = require("fs");
 const os = require("os");
 const path = require("path");
 
-const BASE = "https://openapi.eu.sigencloud.com";
+const BASE = "https://openapi-eu.sigencloud.com";
 
 function readSecrets() {
   const file = path.join(os.homedir(), ".config/magicmirror-sigenergy.env");
